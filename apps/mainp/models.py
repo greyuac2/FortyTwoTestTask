@@ -11,3 +11,6 @@ class MainPage(models.Model):
     cskype = models.CharField(max_length=100)
     bio = models.TextField()
     ocontacts = models.TextField()
+
+    def __str__(self):
+        return self.title
