@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    {% block css %}
+    {% endblock %}
+    <title>{{ title }}</title>
+  </head>
+    <body>
+{#    {% block navbar %}#}
+{#        <nav class="navbar navbar-inverse">#}
+{#            <div class="container-fluid">#}
+{#                <div class="navbar-header">#}
+{#                    <a class="navbar-brand" href="#"> {{ title }} </a>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <ul class="nav navbar-nav">#}
+{#                        <li class="active"><a href="/">Home</a> </li>#}
+{#                        <li><a href="admin/">Admin</a> </li>#}
+{#                        <li><a href="httpreq/">HttpReqStats</a> </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </nav>#}
+{#    {% endblock %}#}
+        <div class="container">
+            {% block content %}
+                <div class="row clearfix">
+                    <div class="col-md-12 column">
+                        {% for httpreq in htresponce|slice:":10" %}
+                            <div class="well"> {{ htresponce }} </div>
+
+                        {% endfor %}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="row">#}
+{#                                    <h3>ID:</h3>#}
+{#                                </div>#}
+{#                                <div class="row">#}
+{#                                    {{ ident }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="row">#}
+{#                                    <h3>HttpRequest:</h3>#}
+{#                                </div>#}
+{#                                <div class="row">#}
+{#                                    {{ htresponce }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="row">#}
+{#                                    <h3>Time:</h3>#}
+{#                                </div>#}
+{#                                <div class="row">#}
+{#                                    {{ atime }}#}
+{#                                </div>#}
+{#                            </div>#}
+
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    <script src="{% static 'bootstrap/js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/base.js' %}"></script>
+    {% block js %}
+    {% endblock %}
+    </body>
+</html>

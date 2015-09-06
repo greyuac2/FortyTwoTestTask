@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View
 from apps.mainp.models import MainPage
+from django.http import HttpRequest
+from apps.httpreq.models import HttpReqStore
 
 
 class Index(View):
@@ -26,5 +28,10 @@ class Index(View):
             udata['cskype'] = cskype
             udata['bio'] = bio
             udata['ocontacts'] = ocontacts
+        if request.method == 'GET' or request.method == 'POST':
+            HttpReqStore.objects.create(htresponce=request)
 
         return render(request, 'base.html', udata)
+
+
+
