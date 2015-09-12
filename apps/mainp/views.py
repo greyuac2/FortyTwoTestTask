@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
 from apps.mainp.models import MainPage
-from django.http import HttpRequest
 from apps.httpreq.models import HttpReqStore
 
 
@@ -32,6 +31,3 @@ class Index(View):
             HttpReqStore.objects.create(htresponce=request)
 
         return render(request, 'base.html', udata)
-
-
-
